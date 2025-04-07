@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Online Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="web project.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">LearnHub<span></span></a>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+                <div class="auth-buttons">
+                    <button class="btn login-btn">Login</button>
+                    <button class="btn signup-btn">Sign Up</button>
+                </div>
+            </div>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search courses, categories..." 
+            autocomplete="off"
+        >
+        <div id="suggestions"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Learn Without Limits</h1>
+                <p>Start, switch, or advance your career with 5,000+ courses, Professional Certificates, and degrees from world-class universities and companies.</p>
+                <div class="hero-buttons">
+                    <button class="btn primary-btn">Join for Free</button>
+                    <button class="btn secondary-btn">Explore Courses</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Online Learning">
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Categories -->
+    <section class="categories" id="courses">
+        <div class="container">
+            <h2>Browse Top Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Development</h3>
+                    <p>1,200 Courses</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Business</h3>
+                    <p>800 Courses</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Finance</h3>
+                    <p>450 Courses</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Design</h3>
+                    <p>1,000 Courses</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Music</h3>
+                    <p>300 Courses</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography</h3>
+                    <p>500 Courses</p>
+                </div>
+            </div>
+            <button class="btn view-all-btn">View All Categories</button>
+        </div>
+    </section>
+
+    <!-- Popular Courses -->
+    <section class="popular-courses">
+        <div class="container">
+            <h2>Most Popular Courses</h2>
+            <div class="course-grid">
+                <!-- Courses will be dynamically added here with JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose LearnHub?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry experts who are passionate about teaching.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Learn Anywhere</h3>
+                    <p>Access your courses on mobile, tablet, or desktop.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-infinity"></i>
+                    <h3>Lifetime Access</h3>
+                    <p>Get lifetime access to courses you purchase.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certification</h3>
+                    <p>Earn certificates to showcase your new skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Start Learning Today</h2>
+            <p>Join over 5 million learners worldwide and develop new skills for your personal and professional growth.</p>
+            <button class="btn primary-btn">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>LearnHub</h3>
+                    <p>Empowering individuals to develop their skills and advance their careers through accessible online education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new courses and features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>I am a:</label>
+                    <div class="user-type-selector">
+                        <div class="user-type-options">
+                            <input type="radio" id="student" name="userType" value="student" checked>
+                            <label for="student" class="user-type-label">Student</label>
+                            
+                            <input type="radio" id="instructor" name="userType" value="instructor">
+                            <label for="instructor" class="user-type-label">Instructor</label>
+                            
+                            <input type="radio" id="parent" name="userType" value="parent">
+                            <label for="parent" class="user-type-label">Parent</label>
+                            
+                            <div class="selection-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn primary-btn">Login</button>
+            </form>
+            <p class="modal-footer">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label>I am a:</label>
+                    <div class="user-type-selector">
+                        <div class="user-type-options">
+                            <input type="radio" id="signup-student" name="userType" value="student" checked>
+                            <label for="signup-student" class="user-type-label">Student</label>
+                            
+                            <input type="radio" id="signup-instructor" name="userType" value="instructor">
+                            <label for="signup-instructor" class="user-type-label">Instructor</label>
+                            
+                            <input type="radio" id="signup-parent" name="userType" value="parent">
+                            <label for="signup-parent" class="user-type-label">Parent</label>
+                            
+                            <div class="selection-slider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirm">Confirm Password</label>
+                    <input type="password" id="signupConfirm" required>
+                </div>
+                <button type="submit" class="btn primary-btn">Sign Up</button>
+            </form>
+            <p class="modal-footer">Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </div>
+    </div>
+
+    <script src="web project.js"></script>
+</body>
+</html>
