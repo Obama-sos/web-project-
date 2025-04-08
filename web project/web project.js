@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal functionality
     const loginBtn = document.querySelector('.login-btn');
     const signupBtn = document.querySelector('.signup-btn');
     const loginModal = document.getElementById('loginModal');
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const showSignup = document.getElementById('showSignup');
     const showLogin = document.getElementById('showLogin');
     
-    // Show login modal
     if (loginBtn && loginModal) {
         loginBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Show signup modal
     if (signupBtn && signupModal) {
         signupBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close modals
     if (closeModals) {
         closeModals.forEach(btn => {
             btn.addEventListener('click', function() {
@@ -57,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Switch between login and signup modals
     if (showSignup && loginModal && signupModal) {
         showSignup.addEventListener('click', function(e) {
             e.preventDefault();
@@ -74,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close modal when clicking outside
     window.addEventListener('click', function(e) {
         if (loginModal && e.target === loginModal) {
             loginModal.classList.remove('active');
@@ -86,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Form submissions
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     
@@ -108,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 userType 
             });
             
-            // Different actions based on user type
             switch(userType) {
                 case 'student':
                     alert('Welcome student! Redirecting to student dashboard...');
@@ -163,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Course data with YouTube video IDs
     const courses = [
         {
             title: "Web Development Bootcamp",
@@ -203,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // Categories data
     const categories = [
         { name: "Development", count: "1,200 Courses" },
         { name: "Business", count: "800 Courses" },
@@ -213,13 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: "Photography", count: "500 Courses" }
     ];
 
-    // Search functionality
     const searchInput = document.getElementById('searchInput');
     const suggestionsContainer = document.getElementById('suggestions');
     let debounceTimer;
 
     if (searchInput && suggestionsContainer) {
-        // Search function with debounce
         searchInput.addEventListener('input', function(e) {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
@@ -231,106 +217,56 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
 
-                // Search both courses and categories
-                const courseMatches = searchCourses(searchTerm);
-                const categoryMatches = searchCategories(searchTerm);
+                const courseMatches = courses.filter(course => 
+                    course.title.toLowerCase().includes(term) || 
+                    course.category.toLowerCase().includes(term) ||
+                    course.instructor.toLowerCase().includes(term)
+                );
                 
-                displaySuggestions(courseMatches, categoryMatches, searchTerm);
+                const categoryMatches = categories.filter(category => 
+                    category.name.toLowerCase().includes(term)
+                );
+                
+                if (courseMatches.length === 0 && categoryMatches.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.classList.add('suggestion-item');
+                    noResults.textContent = 'No results found';
+                    suggestionsContainer.appendChild(noResults);
+                } else {
+                    categoryMatches.forEach(category => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.classList.add('suggestion-item');
+                        suggestionItem.innerHTML = category.name;
+                        const subElement = document.createElement('div');
+                        subElement.className = 'sub-text';
+                        subElement.textContent = `Category: ${category.count}`;
+                        suggestionItem.appendChild(subElement);
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+
+                    courseMatches.forEach(course => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.classList.add('suggestion-item');
+                        suggestionItem.innerHTML = course.title;
+                        const subElement = document.createElement('div');
+                        subElement.className = 'sub-text';
+                        subElement.textContent = `Course: ${course.category} • ${course.instructor}`;
+                        suggestionItem.appendChild(subElement);
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+                }
+                
+                suggestionsContainer.style.display = 'block';
             }, 300);
         });
 
-        // Close suggestions when clicking outside
         document.addEventListener('click', function(e) {
             if (e.target !== searchInput && !suggestionsContainer.contains(e.target)) {
                 suggestionsContainer.style.display = 'none';
             }
         });
-
-        function searchCourses(term) {
-            return courses.filter(course => 
-                course.title.toLowerCase().includes(term) || 
-                course.category.toLowerCase().includes(term) ||
-                course.instructor.toLowerCase().includes(term)
-            );
-        }
-
-        function searchCategories(term) {
-            return categories.filter(category => 
-                category.name.toLowerCase().includes(term)
-            );
-        }
-
-        function displaySuggestions(courseMatches, categoryMatches, searchTerm) {
-            if (courseMatches.length === 0 && categoryMatches.length === 0) {
-                const noResults = document.createElement('div');
-                noResults.classList.add('suggestion-item');
-                noResults.textContent = 'No results found';
-                suggestionsContainer.appendChild(noResults);
-            } else {
-                // Display category matches first
-                categoryMatches.forEach(category => {
-                    const suggestionItem = createSuggestionItem(
-                        category.name, 
-                        `Category: ${category.count}`,
-                        'category',
-                        searchTerm
-                    );
-                    suggestionsContainer.appendChild(suggestionItem);
-                });
-
-                // Then display course matches
-                courseMatches.forEach(course => {
-                    const suggestionItem = createSuggestionItem(
-                        course.title,
-                        `Course: ${course.category} • ${course.instructor}`,
-                        'course',
-                        searchTerm
-                    );
-                    suggestionsContainer.appendChild(suggestionItem);
-                });
-            }
-            
-            suggestionsContainer.style.display = 'block';
-        }
-
-        function createSuggestionItem(mainText, subText, type, searchTerm) {
-            const item = document.createElement('div');
-            item.classList.add('suggestion-item');
-            
-            // Highlight matching text
-            const highlightedText = highlightMatches(mainText, searchTerm);
-            const subElement = document.createElement('div');
-            subElement.className = 'sub-text';
-            subElement.textContent = subText;
-            
-            item.innerHTML = highlightedText;
-            item.appendChild(subElement);
-            
-            item.addEventListener('click', () => {
-                searchInput.value = mainText;
-                suggestionsContainer.style.display = 'none';
-                // Optional: Scroll to matching course
-                if (type === 'course') {
-                    highlightCourse(mainText);
-                }
-            });
-            
-            return item;
-        }
-
-        function highlightMatches(text, term) {
-            if (!term) return text;
-            const regex = new RegExp(term, 'gi');
-            return text.replace(regex, match => `<span class="highlight">${match}</span>`);
-        }
-
-        function highlightCourse(title) {
-            // Implement scroll-to/highlight logic for your course cards
-            console.log(`Selected course: ${title}`);
-        }
     }
 
-    // Populate courses dynamically with click handlers
     const courseGrid = document.querySelector('.course-grid');
     if (courseGrid) {
         courses.forEach(course => {
@@ -355,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // Add click handler to open YouTube video
             courseCard.addEventListener('click', function() {
                 const videoId = this.getAttribute('data-video-id');
                 if (videoId) {
@@ -367,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize user type selector animations
     function initUserTypeSelectors() {
         const userTypeSelectors = document.querySelectorAll('.user-type-options');
         
@@ -385,7 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         slider.style.transform = 'translateX(200%)';
                     }
                     
-                    // Update label colors
                     const labels = selector.querySelectorAll('.user-type-label');
                     labels.forEach(label => label.style.color = '');
                     this.nextElementSibling.style.color = 'white';
@@ -394,6 +327,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Call the initialization function
     initUserTypeSelectors();
 });
